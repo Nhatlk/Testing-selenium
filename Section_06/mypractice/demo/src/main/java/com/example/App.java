@@ -46,7 +46,7 @@ public class App {
         WebElement addButtonByName = driver.findElement(By.name("Add"));
         WebElement addButtonByCss = driver.findElement(By.cssSelector("button#add_btn"));
         WebElement addButtonByXpath = driver.findElement(By.xpath("//button[@id='add_btn']"));
-    }
+    }  
 
     private static void findLoginPageElements(WebDriver driver) {
         driver.get("https://practicetestautomation.com/practice-test-login/");
