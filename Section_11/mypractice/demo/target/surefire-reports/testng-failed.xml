@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="methods" name="Failed suite [Parallel Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="2" parallel="methods" name="Chrome Tests(failed)" verbose="0">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.example.ExceptionsTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="testAddRow2Successfully"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.example.ExceptionsTest -->
+    </classes>
+  </test> <!-- Chrome Tests(failed) -->
+</suite> <!-- Failed suite [Parallel Suite] -->
