@@ -1,0 +1,28 @@
+#### Kịch bản chi tiết 5 Test Case bạn cần code:
+
+* **Test Case 1 (** **testAddRow2Successfully** **)**:
+  1. Click vào nút **Add** (`id="add_btn"`).
+  2. Dùng `WebDriverWait` (10 giây) chờ cho ô input của hàng 2 (`//div[@id='row2']/input`) hiển thị thành công.
+  3. Dùng `Assert.assertTrue` kiểm tra xem ô input hàng 2 có thực sự đang hiển thị (`isDisplayed()`) hay không.
+* **Test Case 2 (** **testSaveRow2WithMessage** **)**:
+  1. Click vào nút **Add**.
+  2. Chờ ô input hàng 2 hiển thị, sau đó tự động gõ chữ `"Phở Bò Đặc Biệt"`.
+  3. Click vào nút **Save** của hàng 2 (`//div[@id='row2']/button[@id='save_btn']`).
+  4. Chờ dòng chữ thông báo xác nhận (`id="confirmation"`) xuất hiện.
+  5. Dùng `Assert.assertEquals` kiểm tra dòng chữ đó có đúng nội dung: `"Row 2 was saved"` hay không.
+* **Test Case 3 (** **testEditRow1DisabledField** **)**:
+  1. Click vào nút **Edit** (`id="edit_btn"`) để mở khóa ô input của hàng 1.
+  2. Chờ cho ô input hàng 1 chuyển sang trạng thái sẵn sàng nhập liệu (`elementToBeClickable`).
+  3. Xóa dữ liệu cũ bằng `.clear()`, sau đó gõ vào `"Bún Chả Hà Nội"`.
+  4. Click nút **Save** của hàng 1 (`//div[@id='row1']/button[@id='save_btn']`).
+  5. Chờ và kiểm tra thông báo xác nhận hiển thị đúng chữ: `"Row 1 was saved"`.
+* **Test Case 4 (** **testInstructionsElementDisappears** **)**:
+  1. Lưu phần tử hướng dẫn ban đầu: `WebElement instructions = driver.findElement(By.id("instructions"));`.
+  2. Click nút **Add**.
+  3. Dùng `wait.until(ExpectedConditions.invisibilityOf(instructions))` để kiểm tra dòng chữ hướng dẫn này đã bị xóa khỏi màn hình.
+  4. Xác nhận kết quả thành công.
+* **Test Case 5 (** **testTimeoutExceptionDemo** **)**:
+  1. Click nút **Add** (hàng 2 mất khoảng 5 giây mới xuất hiện).
+  2. Cố tình tạo một `WebDriverWait` với thời gian chờ chỉ **2 giây** (`Duration.ofSeconds(2)`).
+  3. Dùng khối `try - catch` để bắt lỗi `TimeoutException`.
+  4. In ra thông báo: `"Bắt thành công lỗi TimeoutException do thời gian chờ 2s ngắn hơn thời gian tải thực tế!"`.

@@ -24,7 +24,7 @@ public class ExceptionsTest extends baseTest{
     page.enterRow2Text("Phở bò");
     page.clickRow2SaveButton();
 
-    Assert.assertEquals(page.getConfirmationText(), "Row 2 was saved", "Lỗi: sai thông báo lưu!");
+    Assert.assertEquals(page.getConfirmationText(), "Row was saved", "Lỗi: sai thông báo lưu!");
   }
   
 }
