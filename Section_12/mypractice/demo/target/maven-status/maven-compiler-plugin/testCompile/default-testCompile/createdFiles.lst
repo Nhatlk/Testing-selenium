@@ -1,0 +1,7 @@
+com\example\pages\ExceptionsPage.class
+com\example\pages\BasePage.class
+com\example\base\TestListener.class
+com\example\base\BrowserDriverFactory.class
+com\example\base\BaseTest.class
+com\example\base\ConfigurationReader.class
+com\example\tests\ExceptionsTest.class
