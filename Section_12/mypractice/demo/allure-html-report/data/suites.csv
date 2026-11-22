@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Nov 22 21:28:49 UTC 2026","Sun Nov 22 21:28:49 UTC 2026","585","Parallel Suite","Chrome Tests","com.example.tests.LoginTest","com.example.tests.LoginTest","testLoginWithInvalidPassword","testLoginWithInvalidPassword",""
+"passed","Sun Nov 22 21:28:47 UTC 2026","Sun Nov 22 21:28:48 UTC 2026","1079","Parallel Suite","Chrome Tests","com.example.tests.LoginTest","com.example.tests.LoginTest","testLoginWithInvalidUsername","testLoginWithInvalidUsername",""
+"passed","Sun Nov 22 21:28:44 UTC 2026","Sun Nov 22 21:28:46 UTC 2026","2040","Parallel Suite","Chrome Tests","com.example.tests.LoginTest","com.example.tests.LoginTest","testLoginSuccess","testLoginSuccess",""

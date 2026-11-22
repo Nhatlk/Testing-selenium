@@ -1,0 +1,111 @@
+# name: Selenium TestNG CI Pipeline
+
+# # Tự động kích hoạt khi có lệnh git push hoặc pull_request
+# on:
+#   push:
+#     branches: [ "mypractice", "main", "master" ]
+#   pull_request:
+#     branches: [ "mypractice", "main", "master" ]
+#   workflow_dispatch: # Cho phép bấm nút chạy thủ công trên GitHub
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest # Chạy trên máy chủ ảo Linux Ubuntu của GitHub
+
+#     steps:
+#       # 1. Kéo toàn bộ mã nguồn trên repo về máy chủ ảo
+#       - name: Checkout Source Code
+#         uses: actions/checkout@v4
+
+#       # 2. Cài đặt môi trường Java (JDK 21)
+#       - name: Set up JDK 21
+#         uses: actions/setup-java@v4
+#         with:
+#           java-version: '21'
+#           distribution: 'temurin'
+#           cache: maven # Tối ưu tốc độ tải thư viện
+
+#       # 3. Chạy kiểm thử tự động với Maven Surefire ở chế độ Headless
+#       - name: Run Selenium Tests (Headless)
+#         working-directory: Section_12/mypractice/demo
+#         # Lưu ý: nếu thư mục demo nằm bên trong Section_12/mypractice/demo thì cd vào trước
+#         run: |
+#           cd Section_12/mypractice/demo || true
+#           run: mvn clean test -Dbrowser=chrome-headless
+
+#       # 4. Tự động tải báo cáo Surefire Reports lên tab Actions (dù Pass hay Fail)
+#       - name: Upload Test Report
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: surefire-test-reports
+#           path: |
+#             **/target/surefire-reports/
+#             **/logs/
+
+#       # 5. Tự động tải ảnh chụp màn hình lên nếu có bài test FAIL
+#       - name: Upload Failure Screenshots
+#         if: failure()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: failure-screenshots
+#           path: "**/screenshots/*.png"
+name: Selenium TestNG CI Pipeline
+
+on:
+  push:
+    branches: ["mypractice", "main", "master"]
+  pull_request:
+    branches: ["mypractice", "main", "master"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Run Selenium Tests (Headless)
+        working-directory: Section_12/mypractice/demo
+        run: mvn clean test -Dbrowser=chrome-headless
+
+      # 👇 1. BƯỚC MỚI THÊM: Tạo Allure HTML Report từ kết quả test 👇
+      - name: Generate Allure Report
+        if: always()
+        working-directory: Section_12/mypractice/demo
+        run: |
+          mvn allure:report || true
+
+      # 👇 2. BƯỚC MỚI THÊM: Upload thư mục Allure Report lên Artifacts 👇
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-html-report
+          path: Section_12/mypractice/demo/target/site/allure-maven-plugin/
+
+      # (Các bước cũ bên dưới giữ nguyên)
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-test-reports
+          path: |
+            **/target/surefire-reports/
+            **/logs/
+
+      - name: Upload Failure Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots
+          path: "**/screenshots/*.png"

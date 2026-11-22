@@ -1,0 +1,69 @@
+# ==========================================
+# Maven Build Output (Loại bỏ toàn bộ thư mục target)
+# ==========================================
+target/
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ==========================================
+# Automation Test Outputs & Artifacts
+# ==========================================
+# Ảnh chụp màn hình khi test fail ở máy cục bộ
+screenshots/
+**/screenshots/
+
+# File log ghi vết chạy ở máy cục bộ
+logs/
+**/logs/
+*.log
+
+# Báo cáo mặc định của TestNG
+test-output/
+**/test-output/
+
+# Báo cáo Allure / ExtentReports tạm
+allure-results/
+allure-report/
+**/allure-results/
+**/allure-report/
+
+# ==========================================
+# IDE & Code Editors (Cấu hình riêng của máy bạn)
+# ==========================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# ==========================================
+# Operating System Files (File rác hệ điều hành)
+# ==========================================
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
